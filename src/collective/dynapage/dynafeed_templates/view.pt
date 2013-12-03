@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="collective.dynapage">
+
+  <metal:slot fill-slot="javascript_head_slot">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+    google.load("feeds", "1");
+
+    function initialize() {
+      var feed = new google.feeds.Feed("http://yle.fi/uutiset/rss/uutiset.rss");
+      feed.load(function(result) {
+        if (!result.error) {
+          var container = document.getElementById("feed");
+          var ul = document.createElement("ul");
+          for (var i = 0; i < result.feed.entries.length; i++) {
+            var entry = result.feed.entries[i];
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode(entry.title));
+            ul.appendChild(li);
+          }
+          container.appendChild(ul);
+        }
+      });
+    }
+    google.setOnLoadCallback(initialize);
+    </script>
+  </metal:slot>
+<body>
+
+<metal:main fill-slot="main">
+  <tal:main-macro metal:define-macro="main">
+
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading" tal:content="context/title" />
+
+    <div class="discreet" tal:content="context/description" />
+
+    <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+    <div class="feed">
+    </div>
+
+  </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

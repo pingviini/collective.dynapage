@@ -1,0 +1,24 @@
+<div class="dynacollection-results" tal:define="results view/search">
+  <tal:block tal:condition="results">
+    <div class="collection-title">
+      <a tal:attributes="href string:${context/absolute_url}/RSS">
+        <img tal:attributes="src string:${context/portal_url}/++resource++collective.dynapage/rss.gif"
+           alt="RSS-feed" />
+      </a>
+      <tal:block tal:condition="view/canModify">
+        <a class="wrench-link" tal:attributes="href string:${context/absolute_url}/edit">
+          <img class="wrench-image" tal:attributes="src string:${context/portal_url}/++resource++collective.dynapage/edit.gif"
+               alt="Edit list item" />
+        </a>
+      </tal:block>
+      <p tal:content="context/Title"/>
+    </div>
+    <ul>
+      <li tal:repeat="item results">
+        <a tal:attributes="href item/getURL"
+           tal:content="item/Title" /><br />
+        <span tal:content="item/Description|nothing" />
+      </li>
+    </ul>
+  </tal:block>
+</div>

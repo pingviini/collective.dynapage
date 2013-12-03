@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<metadata>
+  <version>3</version>
+  <dependencies>
+    <!-- commented out as reinstalls will say kaboom with this in here.
+         See more info from http://code.google.com/p/dexterity/issues/detail?id=239
+    <dependency>profile-plone.app.dexterity:default</dependency>-->
+    <dependency>profile-collective.js.doubletap:default</dependency>
+  </dependencies>
+</metadata>

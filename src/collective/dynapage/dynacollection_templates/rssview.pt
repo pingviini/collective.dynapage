@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+  xmlns="http://purl.org/rss/1.0/"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  xmlns:metal="http://xml.zope.org/namespaces/metal">
+
+<metal:block define-macro="master">
+
+<metal:block tal:define="dummy python:request.RESPONSE.setHeader('Content-Type', 'text/xml;;charset='+context.plone_utils.getSiteEncoding())" />
+
+<channel rdf:about="" tal:attributes="rdf:about request/URL">
+  <title tal:content="view/title">The title</title>
+  <link tal:content="context/portal_url">http://url.to.portal</link>
+  <description tal:content="context/description" />
+
+  <image
+    rdf:resource=""
+    tal:attributes="rdf:resource string:${context/portal_url}/${context/base_properties/logoName}" />
+
+</channel>
+
+<tal:block repeat="result view/search">
+  <item rdf:about="" 
+        tal:attributes="rdf:about result/getURL">
+    <title tal:content="result/Title">Title</title>
+    <link tal:content="result/getURL">Identifier</link>
+    <description tal:content="result/Description">Description</description>
+    <dc:publisher tal:content="result/Publisher">Publisher</dc:publisher>
+    <dc:creator tal:content="result/Creator">Creator</dc:creator>
+    <dc:rights tal:content="result/Rights">Rights</dc:rights>
+    <tal:block tal:repeat="item result/Subject">
+      <dc:subject tal:content="item">Item</dc:subject>
+    </tal:block>
+    <dc:date tal:content="result/modified">Modification date</dc:date>
+    <dc:type tal:content="result/Type">Type</dc:type>
+  </item>
+</tal:block>
+
+</metal:block>
+</rdf:RDF>
+

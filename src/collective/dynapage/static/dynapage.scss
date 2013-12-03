@@ -1,0 +1,238 @@
+@mixin opacity($opacity: 1) {
+  filter: alpha(opacity=$opacity * 100);
+  -o-opacity: $opacity;
+  -moz-opacity: $opacity;
+  -webkit-opacity: $opacity;
+  opacity: $opacity;
+}
+
+@mixin user-select($value: none) {
+  -webkit-user-select: $value;
+  -khtml-user-select: $value;
+  -moz-user-select: $value;
+  -o-user-select: $value;
+  user-select: $value;
+}
+
+@mixin border-radius($radius: none) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin border-top-left-radius($radius: none) {
+  -moz-border-radius-topleft: $radius;
+  -webkit-border-top-left-radius: $radius;
+  border-top-left-radius: $radius;
+}
+
+@mixin border-top-right-radius($radius: none) {
+  -moz-border-radius-topright: $radius;
+  -webkit-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+@mixin border-bottom-left-radius($radius: none) {
+  -moz-border-radius-bottomleft: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin border-bottom-right-radius($radius: none) {
+  -moz-border-radius-bottomright: $radius;
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+.image-carousel-text {
+  font-size: 15pt;
+  line-height: 110%;
+}
+
+.viewlet-title {
+  font-size: 120%;
+  font-weight: bold;
+  padding-left: 4pt;
+}
+
+div.dynaitem-collection {
+  float: left;
+  font-size: 10pt;
+  line-height: 1.5em;
+
+  ul {
+    margin-left: 2em;
+    list-style-type: disc;
+    li {
+      display: list-item;
+      line-height: 1.5em;
+      margin-bottom: 0.25em;
+    }
+  }
+}
+
+div.dynaitem-collection-1 {
+  width: 99.999%;
+}
+
+div.dynaitem-collection-2 {
+  width: 49.5%;
+  margin-left: 2pt;
+}
+
+div.dynaitem-collection-3 {
+  width: 32.8%;
+  margin-left: 3pt;
+}
+
+.collection-title {
+  position: relative;
+  background-color: #ddd;
+  width: 100%;
+  height: 2em;
+  margin-top:1em;
+
+  p {
+    padding-top: 2.5pt;
+    padding-left: 8pt;
+    width: 80%;
+    font-size: 120%;
+  }
+
+  /* fix collection title text falling below feed link in IE8 */
+  a { float: right; }
+
+  img {
+    float: right;
+    margin-right: 8pt;
+    margin-top: 1pt;
+    padding-top: 3pt;
+    padding-left: 8pt;
+
+    &.wrench-image {
+      float: left;
+    }
+  }
+}
+
+.dynacarouselWrapper {
+  position: relative;
+  overflow: hidden;
+  max-height: 300px;
+  width: auto;
+}
+
+.dynacarouselStatic,
+.dynacarouselWrapper {
+  margin-bottom: 1em;
+  width: 100%;
+  float: left;
+}
+
+.dynacarousel {
+  height: 100%;
+  width: 100%;
+}
+
+.dynacarouselStatic .dynacarousel { 
+  img.dynacarousel-image {
+    max-width: 100%;
+    height: auto;
+  }
+}
+.dynacarouselWrapper .dynacarousel {
+  img.dynacarousel-image {
+    float: left;
+    margin-right: 30pt;
+  }
+}
+
+.dynacarouselWrapper .dynacarousel-item {
+  height: auto;
+  max-height: 300px;
+  min-height: 90px;
+}
+
+.dynacarousel-item {
+  width: 100%;
+  float: right;
+}
+
+
+.dynacarousel-text {
+  position: right;
+  font-size: 140%;
+  padding-top: 6%;
+  width: 90%;
+  background-color: white;
+}
+
+.dynacarouselWrapper .dynacarousel-previous, .dynacarouselWrapper .dynacarousel-next {
+  position: absolute;
+  top: 2em;
+  bottom: 2em;
+  width: 3em;
+  cursor: pointer;
+  z-index: 2;
+}
+.dynacarouselWrapper:hover .dynacarousel-previous, .dynacarouselWrapper:hover .dynacarousel-next {
+  background: #aaaaaa;
+  @include opacity(0.3);
+}
+.dynacarouselWrapper:hover .dynacarousel-previous:hover, .dynacarouselWrapper:hover .dynacarousel-next:hover {
+  @include opacity(0.6);
+}
+.dynacarouselWrapper:hover .dynacarousel-previous > span, .dynacarouselWrapper:hover .dynacarousel-next > span {
+  display: block;
+}
+.dynacarouselWrapper .dynacarousel-previous {
+  left: 0;
+  @include border-top-right-radius(0.5em);
+  @include border-bottom-right-radius(0.5em);
+}
+.dynacarouselWrapper .dynacarousel-next {
+  right: 0;
+  @include border-top-left-radius(0.5em);
+  @include border-bottom-left-radius(0.5em);
+}
+.dynacarouselWrapper .dynacarousel-previous > span, .dynacarouselWrapper .dynacarousel-next > span {
+  color: white;
+  font-size: 200%;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  margin-top: -0.5em;
+  height: 1em;
+  text-align: center;
+  font-weight: bold;
+  display: none;
+  @include user-select(none);
+}
+.dynacarouselWrapper .dynacarousel-previous:hover > span, .dynacarouselWrapper .dynacarousel-next:hover > span {
+  display: block;
+}
+.dynacarouselWrapper .dynacarousel-selector {
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 2.85ex;
+  text-align: center;
+}
+
+.dynacarouselWrapper .dynacarousel-selector > span {
+  display: inline-block;
+  width: 2ex;
+  height: 2ex;
+  margin-left: 0.25ex;
+  margin-right: 0.25ex;
+  @include border-radius(2ex);
+  cursor: pointer;
+  background: #ddd;
+  @include opacity(0.5);
+}
+.dynacarouselWrapper .dynacarousel-selector > span.selected, .dynacarouselWrapper .dynacarousel-selector > span:hover {
+  @include opacity(1);
+}

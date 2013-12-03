@@ -1,0 +1,39 @@
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+    google.load("feeds", "1");
+
+    function initialize() {
+      var feed = new google.feeds.Feed("http://yle.fi/uutiset/rss/uutiset.rss");
+      feed.load(function(result) {
+        if (!result.error) {
+          var container = document.getElementById("feed");
+          var ul = document.createElement("ul");
+          for (var i = 0; i < result.feed.entries.length; i++) {
+            var entry = result.feed.entries[i];
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode(entry.title));
+            ul.appendChild(li);
+          }
+          container.appendChild(ul);
+        }
+      });
+    }
+    google.setOnLoadCallback(initialize);
+    </script>
+  <div class="collection-title">
+    <a tal:attributes="href context/feed_url">
+      <img tal:attributes="src string:${context/portal_url}/++resource++collective.dynapage/rss.gif"
+         alt="RSS-feed" />
+    </a>
+    <!--<tal:block tal:condition="view/canModify">-->
+      <a class="wrench-link" tal:attributes="href string:${context/absolute_url}/edit">
+        <img class="wrench-image" tal:attributes="src string:${context/portal_url}/++resource++collective.dynapage/edit.gif"
+             alt="Edit list item" />
+      </a>
+    <!--</tal:block>-->
+    <p tal:content="context/Title"/>
+  </div>
+  <div class="dynapage-feed">
+  </div>
+

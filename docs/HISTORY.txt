@@ -1,0 +1,146 @@
+Changelog
+=========
+
+1.0.7 (2013-08-02)
+------------------
+
+- Fix install_requires for Plone 4.3.
+  Some parts of dexterity required by dynapage are optional in newer versions.
+
+1.0.6 (2013-07-10)
+------------------
+
+- Register static directories properly in Plone 4.3
+  (five.grok 1.3.0+ will not do this automatically).
+
+1.0.5 (2013-02-26)
+------------------
+
+- Only offer 'alternate' feeds from the Dynapage's path [fixes #42953729]
+- Upgraded zc.buildout.
+- Updated to use kopla.cfg for jenkins.
+- Simplify jenkins-buildout (rely on nodejs built by buildout.jenkins.)
+- Updated version pins and removed ./bin folder from dvc.
+- Added version pin for zc.recipe.egg.
+- Commented sources out
+- Moved sources under src folder and added jenkins.cfg.
+
+1.0.4 (2012-06-06)
+------------------
+
+- [Fixes #21755073] Float the feed links in collection titles, not just
+  images inside them.
+
+1.0.3 (2012-04-25)
+------------------
+
+- Height changed to auto in dynapage-item (css)
+- [#23598333] Created upgradestep which enables table_sorter.js.
+
+1.0.2 (2012-02-01)
+------------------
+
+- [Fixes #23598333] Add missing alphabetical sort by title to dynapage
+  collection.
+- Prevent horizontal scrolling when swiping (when supported by doubletap).
+
+1.0.1 (2012-01-13)
+------------------
+
+- Added support for horizontal swipe.
+
+1.0 (2012-01-11)
+----------------
+
+- Refactored opacity, border-radius and user-select to use mixins.
+- Fix forced size on static dynapage images.
+- edit-view css fixed
+- Keywords bug fixed. Scandinavian letters removed from tokens.
+- input keywords decoded to unicode objects. Still the bug remains.
+- Added a workaround for bug in plone.outputfilters to break relative links
+  in plone.app.textfield.
+- Updated check for change for the already visible content.
+- [Fixes #22533923] Sets old objects review_state to migrated object.
+
+1.0rc3 (2011-12-13)
+--------------------
+
+- Doesn't crash when there is no content text in dynaimage or dynapage.
+- Doesn't crash if static image is missing for some reason from relation
+  catalog.
+
+1.0rc1 (2011-11-30)
+-------------------
+
+- Replaced wrench-icon with a pencil one.
+- Added rss.gif with transparent corners.
+- Display viewlets below content body instead of below content.
+
+1.0b11 (2011-11-24)
+-------------------
+
+- Added migration fix for collections which have space in title.
+
+1.0b10 (2011-11-24)
+-------------------
+
+- Fix for carousel behavior attributes migration.
+
+1.0b9 (2011-11-23)
+------------------
+
+- Buxfix for picking overridingContent.
+
+1.0b8 (2011-11-22)
+------------------
+
+- Hide collection wrench if user doesn't have ManagePortalContent permission -
+  this time for real without breaking anything :)
+
+1.0b7 (2011-11-22)
+------------------
+
+- Added missing migration method call.
+- Hide collection wrench if user doesn't have ManagePortalContent permission.
+
+1.0b6 (2011-11-22)
+------------------
+
+- Added blob support.
+- Add new... menu works.
+- Dynapage is now in portal_properties default_page_types list.
+- Added custom ObjPathSourceBinder to make sure navigation settings doesn't
+  prevent us finding Images with content tree widget used by RelationChoice-
+  field.
+
+1.0b5 (2011-11-18)
+------------------
+
+- Displaying overridingContent in carousel works.
+- Migration from Products.JYUDynaPage works.
+- Fixed a bug with carousel without controllers not working.
+- Added referenceable behaviors to content types.
+- Added Image and File to dynapage allowed types.
+- Added alt text to carousel images.
+
+1.0b4 (2011-11-16)
+------------------
+
+- Fixes SCSS. Updated selector-bullets style.
+- Updated carousel-script.
+
+1.0b3 (2011-11-15)
+------------------
+
+- Modified styles.
+
+1.0b2 (2011-11-15)
+------------------
+
+- Added / modified interfaces.
+- Added monkeypatch for RelationListDataManager.
+
+1.0b1 (2011-11-11)
+------------------
+
+- First beta release

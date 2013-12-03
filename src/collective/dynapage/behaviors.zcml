@@ -1,0 +1,18 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:grok="http://namespaces.zope.org/grok"
+    i18n_domain="collective.dynapage">
+
+    <include package="plone.behavior" file="meta.zcml" />
+    <include package="plone.directives.form" file="meta.zcml" />
+    <include package="plone.directives.form" />
+
+    <plone:behavior
+        title="Dynapage Carousel"
+        description="Display carousel items above dynapage content."
+        provides=".behaviors.ICarousel"
+        for=".dynapage.IDynapage"
+        />
+
+</configure>

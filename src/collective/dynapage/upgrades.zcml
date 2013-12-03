@@ -1,0 +1,34 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+   i18n_domain="collective.dynapage">
+
+  <genericsetup:upgradeStep
+     title="Upgrade collective.dynapage 1 to 2"
+     description="Upgrades collective.dynapage from profile 1 to 2."
+     profile="collective.dynapage:default"
+     source="1" destination="2" sortkey="1"
+     handler="collective.dynapage.upgrades.upgrade1to2"
+     />
+
+  <genericsetup:registerProfile
+     name="upgrade1to2"
+     title="Upgrade collective.dynapage 1 to 2"
+     directory="profiles/upgrade1to2"
+     description="Upgrades collective.dynapage from profile 1 to 2."
+     provides="Products.GenericSetup.interfaces.EXTENSION"
+     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+     />
+
+  <genericsetup:upgradeDepends
+     title="Upgrades collective.addthis GS profile from 2 to 3."
+     description="Enables table_sorter.js for unauthenticated users."
+     source="2"
+     destination="3"
+     profile="collective.dynapage:default"
+     import_steps="jsregistry"
+     purge="False"
+     run_deps="False"
+     />
+
+</configure>

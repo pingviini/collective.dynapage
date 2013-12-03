@@ -1,0 +1,6 @@
+<object name="portal_types">
+ <object name="collective.dynapage" meta_type="Dexterity FTI" />
+ <object name="collective.dynaitem.feed" meta_type="Dexterity FTI" />
+ <object name="collective.dynaitem.image" meta_type="Dexterity FTI" />
+ <object name="collective.dynaitem.collection" meta_type="Dexterity FTI" />
+</object>

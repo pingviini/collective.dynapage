@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Properties Tool">
+ <object name="site_properties" meta_type="Plone Property Sheet">
+  <property name="types_not_searched" type="lines">
+   <element value="collective.dynaitem.feed"/>
+   <element value="collective.dynaitem.collection"/>
+   <element value="collective.dynaitem.image"/>
+  </property>
+  <property name="default_page_types" type="lines">
+   <element value="collective.dynapage"/>
+  </property>
+ </object>
+ <object name="navtree_properties">
+  <property name="metaTypesNotToList" types="lines" purge="false">
+   <element value="collective.dynaitem.image" />
+   <element value="collective.dynaitem.collection" />
+   <element value="collective.dynaitem.feed" />
+  </property>
+ </object>
+</object>

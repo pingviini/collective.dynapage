@@ -1,0 +1,57 @@
+<tal:block tal:condition="nocall:viewlet/content">
+<metal:content tal:define="content nocall:viewlet/content;
+  kssClassesView context/@@kss_field_decorator_view;
+  getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
+  templateId string:view"
+  tal:condition="content" define-macro="content">
+  <tal:block tal:condition="viewlet/overridingContent">
+    <tal:block tal:condition="content/to_object">
+    <div class="dynacarouselStatic" tal:define="link viewlet/target">
+      <div tal:attributes="id content/to_object/id" class="dynacarousel">
+        <tal:block tal:condition="not:link">
+          <tal:embedding condition="exists:content/to_object/carouselview"
+            replace="structure content/to_object/carouselview" />
+        </tal:block>
+
+        <a tal:condition="link" href="#"
+          tal:attributes="href link; title content/to_object/title|nothing">
+          <tal:embedding condition="exists:content/to_object/carouselview"
+            replace="structure content/to_object/carouselview" />
+        </a>
+      </div>
+    </div>
+    </tal:block>
+  </tal:block>
+
+  <div class="dynacarouselWrapper" tal:condition="not:viewlet/overridingContent"
+    tal:define="delay viewlet/delay; link viewlet/target">
+
+    <div tal:attributes="id content/id" class="dynacarousel">
+      <div tal:condition="not:link">
+        <tal:embedding condition="exists:content/carouselview"
+          replace="structure content/carouselview" />
+      </div>
+
+      <a tal:condition="link" href="#"
+        tal:attributes="href link; title content/title|nothing">
+        <tal:embedding condition="exists:content/carouselview"
+          replace="structure content/carouselview" />
+      </a>
+    </div>
+
+    <form class="dynacarouselForm" tal:condition="delay"
+      method="get" style="display: none"
+      tal:attributes="id context/id; action string:${context/absolute_url}/@@carouselview">
+
+      <select name="id">
+        <option tal:repeat="id viewlet/folderly"
+          tal:attributes="value id" tal:content="repeat/id/index"/>
+      </select>
+
+      <input type="hidden" name="delay" tal:attributes="value delay" />
+      <input type="hidden" name="controls" tal:condition="context/showNavigation" />
+    </form>
+  </div>
+</metal:content>
+</tal:block>
+

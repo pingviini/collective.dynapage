@@ -1,0 +1,9 @@
+<tal:block tal:define="data viewlet/search" tal:condition="data/len">
+<tal:block tal:define="toplen data/len" tal:repeat="result data/data">
+  <div tal:condition="result/len" tal:attributes="
+    class string:dynaitem-collection dynaitem-collection-${toplen}">
+    <div tal:content="structure result/view"/>
+  </div>
+</tal:block>
+  <p style="clear:both;" />
+</tal:block>

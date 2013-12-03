@@ -1,0 +1,20 @@
+<div tal:define="image nocall:context/image; link context/link_url"
+   tal:condition="nocall:image" class="dynacarousel-item">
+  <img class="dynacarousel-image"
+       tal:attributes="src string:${context/absolute_url}/@@download/image/${image/filename};
+                       height image/_height | nothing;
+                       width image/_width | nothing;
+                       alt view/getAltText;"
+
+      />
+  <div tal:condition="context/text">
+    <div class="dynacarousel-text" tal:condition="not: link">
+      <p tal:content="structure context/text/output" />
+    </div>
+    <div class="dynacarousel-text" tal:condition="link">
+      <a tal:attributes="href link">
+        <span style="display: block;" tal:content="structure context/text/output" />
+      </a>
+    </div>
+  </div>
+</div>
